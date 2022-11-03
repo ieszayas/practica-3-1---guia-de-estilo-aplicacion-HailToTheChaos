@@ -1,8 +1,11 @@
 
+import java.awt.Color;
 import java.awt.Toolkit;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Pantalla_login extends javax.swing.JFrame {
 
@@ -10,8 +13,10 @@ public class Pantalla_login extends javax.swing.JFrame {
 
     public Pantalla_login() {
         initComponents();
-//        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("src\\media\\icono.png")));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("src\\media\\icono.png"));
+        frame_principal.setIconImage(Toolkit.getDefaultToolkit().getImage("src\\media\\icono.png"));
         frame_principal.setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -19,7 +24,7 @@ public class Pantalla_login extends javax.swing.JFrame {
     private void initComponents() {
 
         frame_cambiarContra = new javax.swing.JFrame();
-        jPanel1 = new javax.swing.JPanel();
+        panel_cambiarContra = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         PassField_contraAct = new javax.swing.JPasswordField();
@@ -68,10 +73,20 @@ public class Pantalla_login extends javax.swing.JFrame {
         etiqueta_titulo_principal = new javax.swing.JLabel();
         etiqueta_bienvenido = new javax.swing.JLabel();
         label_logo = new javax.swing.JLabel();
-        boton_cerrarSesion = new javax.swing.JButton();
         etiqueta_info = new javax.swing.JLabel();
+        panel_Botones = new javax.swing.JPanel();
+        boton_cerrarSesion = new javax.swing.JButton();
         boton_nuevoUser = new javax.swing.JButton();
         boton_cambiar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea_principal = new javax.swing.JTextArea();
+        panel_textArea = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menu_archivo = new javax.swing.JMenu();
+        menuItem_guardar = new javax.swing.JMenuItem();
+        menuItem_abrir = new javax.swing.JMenuItem();
+        menu_edicion = new javax.swing.JMenu();
+        menuItem_selector = new javax.swing.JMenuItem();
         panel_login = new javax.swing.JPanel();
         label_instrucciones = new javax.swing.JLabel();
         label_usuario = new javax.swing.JLabel();
@@ -90,40 +105,40 @@ public class Pantalla_login extends javax.swing.JFrame {
         frame_cambiarContra.setResizable(false);
         frame_cambiarContra.setSize(new java.awt.Dimension(518, 312));
 
-        jPanel1.setBackground(new java.awt.Color(33, 36, 41));
-        jPanel1.setLayout(null);
+        panel_cambiarContra.setBackground(new java.awt.Color(33, 36, 41));
+        panel_cambiarContra.setLayout(null);
 
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(40, 109, 213));
         jLabel11.setText("Repetir nueva contraseña:");
-        jPanel1.add(jLabel11);
+        panel_cambiarContra.add(jLabel11);
         jLabel11.setBounds(30, 200, 230, 18);
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(40, 109, 213));
         jLabel12.setText("Contraseña actual:");
-        jPanel1.add(jLabel12);
+        panel_cambiarContra.add(jLabel12);
         jLabel12.setBounds(30, 120, 180, 18);
 
         PassField_contraAct.setBackground(new java.awt.Color(49, 52, 59));
         PassField_contraAct.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         PassField_contraAct.setForeground(new java.awt.Color(255, 255, 255));
         PassField_contraAct.setBorder(null);
-        jPanel1.add(PassField_contraAct);
+        panel_cambiarContra.add(PassField_contraAct);
         PassField_contraAct.setBounds(260, 120, 145, 18);
 
         passField_nueva2.setBackground(new java.awt.Color(49, 52, 59));
         passField_nueva2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         passField_nueva2.setForeground(new java.awt.Color(255, 255, 255));
         passField_nueva2.setBorder(null);
-        jPanel1.add(passField_nueva2);
+        panel_cambiarContra.add(passField_nueva2);
         passField_nueva2.setBounds(260, 200, 145, 18);
 
         passField_nueva.setBackground(new java.awt.Color(49, 52, 59));
         passField_nueva.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         passField_nueva.setForeground(new java.awt.Color(255, 255, 255));
         passField_nueva.setBorder(null);
-        jPanel1.add(passField_nueva);
+        panel_cambiarContra.add(passField_nueva);
         passField_nueva.setBounds(260, 160, 145, 18);
 
         checkBox_mostrarContraNueva.setBackground(new java.awt.Color(33, 36, 41));
@@ -136,7 +151,7 @@ public class Pantalla_login extends javax.swing.JFrame {
                 checkBox_mostrarContraNuevaActionPerformed(evt);
             }
         });
-        jPanel1.add(checkBox_mostrarContraNueva);
+        panel_cambiarContra.add(checkBox_mostrarContraNueva);
         checkBox_mostrarContraNueva.setBounds(410, 120, 80, 20);
 
         checkBox_mostrarContraAct.setBackground(new java.awt.Color(33, 36, 41));
@@ -149,13 +164,13 @@ public class Pantalla_login extends javax.swing.JFrame {
                 checkBox_mostrarContraActActionPerformed(evt);
             }
         });
-        jPanel1.add(checkBox_mostrarContraAct);
+        panel_cambiarContra.add(checkBox_mostrarContraAct);
         checkBox_mostrarContraAct.setBounds(410, 160, 80, 20);
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Por favor, introduce la nueva contraseña");
-        jPanel1.add(jLabel9);
+        panel_cambiarContra.add(jLabel9);
         jLabel9.setBounds(20, 70, 450, 18);
 
         checkBox_mostrarContraNueva2.setBackground(new java.awt.Color(33, 36, 41));
@@ -167,7 +182,7 @@ public class Pantalla_login extends javax.swing.JFrame {
                 checkBox_mostrarContraNueva2ActionPerformed(evt);
             }
         });
-        jPanel1.add(checkBox_mostrarContraNueva2);
+        panel_cambiarContra.add(checkBox_mostrarContraNueva2);
         checkBox_mostrarContraNueva2.setBounds(410, 200, 80, 22);
 
         boton_cancelar.setBackground(new java.awt.Color(35, 133, 255));
@@ -180,7 +195,7 @@ public class Pantalla_login extends javax.swing.JFrame {
                 boton_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_cancelar);
+        panel_cambiarContra.add(boton_cancelar);
         boton_cancelar.setBounds(40, 250, 160, 30);
 
         boton_aceptar.setBackground(new java.awt.Color(35, 133, 255));
@@ -193,15 +208,10 @@ public class Pantalla_login extends javax.swing.JFrame {
                 boton_aceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_aceptar);
+        panel_cambiarContra.add(boton_aceptar);
         boton_aceptar.setBounds(270, 250, 160, 30);
 
         panel_titulo1.setBackground(new java.awt.Color(33, 36, 41));
-        panel_titulo1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel_titulo1MouseClicked(evt);
-            }
-        });
 
         etiqueta_cerrar_cambiarContra.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         etiqueta_cerrar_cambiarContra.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,24 +274,24 @@ public class Pantalla_login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(panel_titulo1);
+        panel_cambiarContra.add(panel_titulo1);
         panel_titulo1.setBounds(0, 0, 520, 40);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(40, 109, 213));
         jLabel10.setText("Nueva contraseña:");
-        jPanel1.add(jLabel10);
+        panel_cambiarContra.add(jLabel10);
         jLabel10.setBounds(30, 160, 180, 18);
 
         javax.swing.GroupLayout frame_cambiarContraLayout = new javax.swing.GroupLayout(frame_cambiarContra.getContentPane());
         frame_cambiarContra.getContentPane().setLayout(frame_cambiarContraLayout);
         frame_cambiarContraLayout.setHorizontalGroup(
             frame_cambiarContraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(panel_cambiarContra, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
         frame_cambiarContraLayout.setVerticalGroup(
             frame_cambiarContraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+            .addComponent(panel_cambiarContra, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
         );
 
         frame_agregar.setTitle("Agregar Nuevo Usuario");
@@ -296,11 +306,6 @@ public class Pantalla_login extends javax.swing.JFrame {
         panel_agregar.setLayout(null);
 
         panel_titulo3.setBackground(new java.awt.Color(33, 36, 41));
-        panel_titulo3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel_titulo3MouseClicked(evt);
-            }
-        });
 
         etiqueta_cerrar3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         etiqueta_cerrar3.setForeground(new java.awt.Color(255, 255, 255));
@@ -510,7 +515,7 @@ public class Pantalla_login extends javax.swing.JFrame {
         frame_principal.setAlwaysOnTop(true);
         frame_principal.setUndecorated(true);
         frame_principal.setResizable(false);
-        frame_principal.setSize(new java.awt.Dimension(389, 376));
+        frame_principal.setSize(new java.awt.Dimension(603, 505));
 
         panel_principal.setBackground(new java.awt.Color(33, 36, 41));
         panel_principal.setLayout(null);
@@ -558,7 +563,7 @@ public class Pantalla_login extends javax.swing.JFrame {
         panel_titulo2Layout.setHorizontalGroup(
             panel_titulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_titulo2Layout.createSequentialGroup()
-                .addComponent(etiqueta_titulo_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addComponent(etiqueta_titulo_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etiqueta_minimizar_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -579,7 +584,7 @@ public class Pantalla_login extends javax.swing.JFrame {
         );
 
         panel_principal.add(panel_titulo2);
-        panel_titulo2.setBounds(0, 0, 390, 0);
+        panel_titulo2.setBounds(0, 0, 610, 40);
 
         etiqueta_bienvenido.setBackground(new java.awt.Color(35, 133, 255));
         etiqueta_bienvenido.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
@@ -587,11 +592,22 @@ public class Pantalla_login extends javax.swing.JFrame {
         etiqueta_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_bienvenido.setText("Bienvenid@");
         panel_principal.add(etiqueta_bienvenido);
-        etiqueta_bienvenido.setBounds(20, 70, 350, 30);
+        etiqueta_bienvenido.setBounds(10, 80, 350, 30);
 
         label_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icono.png"))); // NOI18N
         panel_principal.add(label_logo);
-        label_logo.setBounds(160, 120, 60, 60);
+        label_logo.setBounds(150, 130, 60, 60);
+
+        etiqueta_info.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        etiqueta_info.setForeground(new java.awt.Color(255, 255, 255));
+        etiqueta_info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_info.setText("El usuario  está logueado");
+        etiqueta_info.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        panel_principal.add(etiqueta_info);
+        etiqueta_info.setBounds(20, 210, 280, 18);
+
+        panel_Botones.setBackground(new java.awt.Color(33, 36, 41));
+        panel_Botones.setOpaque(false);
 
         boton_cerrarSesion.setBackground(new java.awt.Color(35, 133, 255));
         boton_cerrarSesion.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -603,16 +619,6 @@ public class Pantalla_login extends javax.swing.JFrame {
                 boton_cerrarSesionActionPerformed(evt);
             }
         });
-        panel_principal.add(boton_cerrarSesion);
-        boton_cerrarSesion.setBounds(10, 320, 358, 30);
-
-        etiqueta_info.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        etiqueta_info.setForeground(new java.awt.Color(255, 255, 255));
-        etiqueta_info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiqueta_info.setText("El usuario  está logueado");
-        etiqueta_info.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        panel_principal.add(etiqueta_info);
-        etiqueta_info.setBounds(70, 200, 240, 18);
 
         boton_nuevoUser.setBackground(new java.awt.Color(35, 133, 255));
         boton_nuevoUser.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -624,8 +630,6 @@ public class Pantalla_login extends javax.swing.JFrame {
                 boton_nuevoUserActionPerformed(evt);
             }
         });
-        panel_principal.add(boton_nuevoUser);
-        boton_nuevoUser.setBounds(10, 280, 358, 30);
 
         boton_cambiar.setBackground(new java.awt.Color(35, 133, 255));
         boton_cambiar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -637,39 +641,128 @@ public class Pantalla_login extends javax.swing.JFrame {
                 boton_cambiarActionPerformed(evt);
             }
         });
-        panel_principal.add(boton_cambiar);
-        boton_cambiar.setBounds(10, 240, 358, 30);
+
+        javax.swing.GroupLayout panel_BotonesLayout = new javax.swing.GroupLayout(panel_Botones);
+        panel_Botones.setLayout(panel_BotonesLayout);
+        panel_BotonesLayout.setHorizontalGroup(
+            panel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_BotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boton_cambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_nuevoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panel_BotonesLayout.setVerticalGroup(
+            panel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_BotonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(boton_cambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(boton_nuevoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(boton_cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panel_principal.add(panel_Botones);
+        panel_Botones.setBounds(350, 100, 210, 120);
+
+        textArea_principal.setColumns(20);
+        textArea_principal.setRows(5);
+        jScrollPane1.setViewportView(textArea_principal);
+
+        panel_principal.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 260, 550, 210);
+
+        javax.swing.GroupLayout panel_textAreaLayout = new javax.swing.GroupLayout(panel_textArea);
+        panel_textArea.setLayout(panel_textAreaLayout);
+        panel_textAreaLayout.setHorizontalGroup(
+            panel_textAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+        panel_textAreaLayout.setVerticalGroup(
+            panel_textAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+
+        panel_principal.add(panel_textArea);
+        panel_textArea.setBounds(90, 260, 420, 210);
+
+        jMenuBar1.setBackground(new java.awt.Color(33, 36, 41));
+        jMenuBar1.setBorder(null);
+        jMenuBar1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jMenuBar1MouseDragged(evt);
+            }
+        });
+        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuBar1MouseClicked(evt);
+            }
+        });
+
+        menu_archivo.setText("Archivo");
+
+        menuItem_guardar.setText("Guardar");
+        menuItem_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_guardarActionPerformed(evt);
+            }
+        });
+        menu_archivo.add(menuItem_guardar);
+
+        menuItem_abrir.setText("Abrir");
+        menuItem_abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_abrirActionPerformed(evt);
+            }
+        });
+        menu_archivo.add(menuItem_abrir);
+
+        jMenuBar1.add(menu_archivo);
+
+        menu_edicion.setText("Edición");
+
+        menuItem_selector.setText("Selector de color");
+        menuItem_selector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_selectorActionPerformed(evt);
+            }
+        });
+        menu_edicion.add(menuItem_selector);
+
+        jMenuBar1.add(menu_edicion);
+
+        frame_principal.setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout frame_principalLayout = new javax.swing.GroupLayout(frame_principal.getContentPane());
         frame_principal.getContentPane().setLayout(frame_principalLayout);
         frame_principalLayout.setHorizontalGroup(
             frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
         );
         frame_principalLayout.setVerticalGroup(
             frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setBackground(new java.awt.Color(33, 36, 41));
         setName("frame_login"); // NOI18N
         setUndecorated(true);
         setResizable(false);
 
         panel_login.setBackground(new java.awt.Color(33, 36, 41));
-        panel_login.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panel_loginMousePressed(evt);
-            }
-        });
         panel_login.setLayout(null);
 
         label_instrucciones.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         label_instrucciones.setForeground(new java.awt.Color(255, 255, 255));
         label_instrucciones.setText("Por favor, introduzca sus credenciales para acceder:");
         panel_login.add(label_instrucciones);
-        label_instrucciones.setBounds(10, 50, 430, 18);
+        label_instrucciones.setBounds(20, 50, 430, 18);
 
         label_usuario.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         label_usuario.setForeground(new java.awt.Color(40, 109, 213));
@@ -708,6 +801,7 @@ public class Pantalla_login extends javax.swing.JFrame {
         boton_log.setForeground(new java.awt.Color(255, 255, 255));
         boton_log.setText("Login");
         boton_log.setBorder(null);
+        boton_log.setOpaque(true);
         boton_log.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_logActionPerformed(evt);
@@ -802,7 +896,7 @@ public class Pantalla_login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_login, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(panel_login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -942,18 +1036,10 @@ public class Pantalla_login extends javax.swing.JFrame {
         frame_principal.setVisible(true);
     }//GEN-LAST:event_etiqueta_cerrar_cambiarContraMouseClicked
 
-    private void panel_titulo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_titulo1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_panel_titulo1MouseClicked
-
     private void etiqueta_cerrar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiqueta_cerrar2MouseClicked
         frame_principal.dispose();
         this.setVisible(true);
     }//GEN-LAST:event_etiqueta_cerrar2MouseClicked
-
-    private void panel_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_loginMousePressed
-
-    }//GEN-LAST:event_panel_loginMousePressed
 
     private void etiqueta_cabezeraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiqueta_cabezeraMousePressed
         x = evt.getX();
@@ -999,10 +1085,6 @@ public class Pantalla_login extends javax.swing.JFrame {
         y = evt.getY();
     }//GEN-LAST:event_etiqueta_titulo_agregarMousePressed
 
-    private void panel_titulo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_titulo3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_panel_titulo3MouseClicked
-
     private void etiqueta_minimizar_cambiarContraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiqueta_minimizar_cambiarContraMouseClicked
         frame_cambiarContra.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_etiqueta_minimizar_cambiarContraMouseClicked
@@ -1015,6 +1097,66 @@ public class Pantalla_login extends javax.swing.JFrame {
     private void etiqueta_titulo_cambiarContraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etiqueta_titulo_cambiarContraMouseDragged
         frame_cambiarContra.setLocation(frame_cambiarContra.getLocation().x + evt.getX() - x, frame_cambiarContra.getLocation().y + evt.getY() - y);
     }//GEN-LAST:event_etiqueta_titulo_cambiarContraMouseDragged
+
+    private void menuItem_selectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_selectorActionPerformed
+        frame_principal.setVisible(false);
+        JColorChooser jc = new JColorChooser();
+        Color background = JColorChooser.showDialog(jc, "Elija color", Color.BLUE);
+
+        panel_login.setBackground(background);
+        panel_principal.setBackground(background);
+        panel_agregar.setBackground(background);
+        
+        frame_principal.setVisible(true);
+    }//GEN-LAST:event_menuItem_selectorActionPerformed
+
+    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jMenuBar1MouseClicked
+
+    private void jMenuBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseDragged
+        frame_principal.setLocation(frame_principal.getLocation().x + evt.getX() - x, frame_principal.getLocation().y + evt.getY() - y);
+    }//GEN-LAST:event_jMenuBar1MouseDragged
+
+    private void menuItem_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_guardarActionPerformed
+        JFileChooser fchooser = new JFileChooser();
+        frame_principal.setVisible(false);
+        fchooser.setVisible(true);
+        int seleccion = fchooser.showOpenDialog(fchooser);
+        boolean append = false;
+        String entrada = textArea_principal.getText();
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = new File(fchooser.getSelectedFile().getPath() + ".txt");
+            if (fichero.exists()) {
+                int dialogButton = JOptionPane.showConfirmDialog(null, "El fichero ya existe,¿desea sobreescribirlo?", "WARNING", JOptionPane.YES_NO_OPTION);
+                if (dialogButton == JOptionPane.NO_OPTION) {
+                    append = true;
+                }
+            }
+            Metodos.guardarEnFichero(entrada, fichero, append);
+        }
+        frame_principal.setVisible(true);
+    }//GEN-LAST:event_menuItem_guardarActionPerformed
+
+    private void menuItem_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_abrirActionPerformed
+        JFileChooser fchooser = new JFileChooser();
+        fchooser.setAcceptAllFileFilterUsed(false);
+        fchooser.addChoosableFileFilter(new FileNameExtensionFilter("TXT Documents", "txt"));
+
+        frame_principal.setVisible(false);
+        fchooser.setVisible(true);
+        int seleccion = fchooser.showOpenDialog(fchooser);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = new File(fchooser.getSelectedFile().getPath());
+            if (fichero.exists()) {
+                textArea_principal.setText(Metodos.leerFichero(fichero));
+            }
+        }
+        frame_principal.setVisible(true);
+    }//GEN-LAST:event_menuItem_abrirActionPerformed
 
     private boolean verificaciones() {
         String usuario = textField_agregarUsuario.getText();
@@ -1091,17 +1233,19 @@ public class Pantalla_login extends javax.swing.JFrame {
     }
 
     public static void main(String args[]) {
-        try {
-            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pantalla_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pantalla_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pantalla_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pantalla_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        try {
+            // Set System L&F
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+        } catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        } catch (ClassNotFoundException e) {
+            // handle exception
+        } catch (InstantiationException e) {
+            // handle exception
+        } catch (IllegalAccessException e) {
+            // handle exception
         }
         //</editor-fold>
 
@@ -1112,6 +1256,7 @@ public class Pantalla_login extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PassField_contraAct;
@@ -1159,14 +1304,23 @@ public class Pantalla_login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_instrucciones;
     private javax.swing.JLabel label_logo;
     private javax.swing.JLabel label_passwd;
     private javax.swing.JLabel label_usuario;
+    private javax.swing.JMenuItem menuItem_abrir;
+    private javax.swing.JMenuItem menuItem_guardar;
+    private javax.swing.JMenuItem menuItem_selector;
+    private javax.swing.JMenu menu_archivo;
+    private javax.swing.JMenu menu_edicion;
+    private javax.swing.JPanel panel_Botones;
     private javax.swing.JPanel panel_agregar;
+    private javax.swing.JPanel panel_cambiarContra;
     private javax.swing.JPanel panel_login;
     private javax.swing.JPanel panel_principal;
+    private javax.swing.JPanel panel_textArea;
     private javax.swing.JPanel panel_titulo;
     private javax.swing.JPanel panel_titulo1;
     private javax.swing.JPanel panel_titulo2;
@@ -1174,6 +1328,7 @@ public class Pantalla_login extends javax.swing.JFrame {
     private javax.swing.JPasswordField passField_nueva;
     private javax.swing.JPasswordField passField_nueva2;
     private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextArea textArea_principal;
     private javax.swing.JTextField textField_agregarContra;
     private javax.swing.JTextField textField_agregarContra2;
     private javax.swing.JTextField textField_agregarUsuario;
